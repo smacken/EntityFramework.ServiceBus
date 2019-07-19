@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.ServiceBusConsole", "EntityFramework.ServiceBusConsole\EntityFramework.ServiceBusConsole.csproj", "{C0CC7EE7-AD65-4720-BED5-ADDA76055BE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.ServiceBus", "EntityFramework.ServiceBus\EntityFramework.ServiceBus.csproj", "{3CAF6A80-FD56-4932-8B0B-40988BB360A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0CC7EE7-AD65-4720-BED5-ADDA76055BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0CC7EE7-AD65-4720-BED5-ADDA76055BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0CC7EE7-AD65-4720-BED5-ADDA76055BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0CC7EE7-AD65-4720-BED5-ADDA76055BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CAF6A80-FD56-4932-8B0B-40988BB360A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CAF6A80-FD56-4932-8B0B-40988BB360A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CAF6A80-FD56-4932-8B0B-40988BB360A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CAF6A80-FD56-4932-8B0B-40988BB360A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B7A452C-051E-4FE5-BE5C-A7D94DEF5514}
+	EndGlobalSection
+EndGlobal

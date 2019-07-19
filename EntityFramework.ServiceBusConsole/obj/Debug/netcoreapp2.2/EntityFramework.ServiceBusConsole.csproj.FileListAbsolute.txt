@@ -1,0 +1,5 @@
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBusConsole\bin\Debug\netcoreapp2.2\EntityFramework.ServiceBus.dll
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBusConsole\obj\Debug\netcoreapp2.2\EntityFramework.ServiceBusConsole.csprojAssemblyReference.cache
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBusConsole\obj\Debug\netcoreapp2.2\EntityFramework.ServiceBusConsole.csproj.CoreCompileInputs.cache
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBusConsole\obj\Debug\netcoreapp2.2\EntityFramework.ServiceBusConsole.AssemblyInfoInputs.cache
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBusConsole\obj\Debug\netcoreapp2.2\EntityFramework.ServiceBusConsole.AssemblyInfo.cs

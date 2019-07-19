@@ -1,0 +1,6 @@
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBus\bin\Debug\netstandard2.0\EntityFramework.ServiceBus.deps.json
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBus\bin\Debug\netstandard2.0\EntityFramework.ServiceBus.dll
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBus\obj\Debug\netstandard2.0\EntityFramework.ServiceBus.csprojAssemblyReference.cache
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBus\obj\Debug\netstandard2.0\EntityFramework.ServiceBus.csproj.CoreCompileInputs.cache
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBus\obj\Debug\netstandard2.0\EntityFramework.ServiceBus.AssemblyInfoInputs.cache
+C:\scratch\EntityFramework.ServiceBus\EntityFramework.ServiceBus\obj\Debug\netstandard2.0\EntityFramework.ServiceBus.AssemblyInfo.cs

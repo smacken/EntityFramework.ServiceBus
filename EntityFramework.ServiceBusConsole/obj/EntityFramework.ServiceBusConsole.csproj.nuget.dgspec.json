@@ -1,0 +1,162 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBusConsole\\EntityFramework.ServiceBusConsole.csproj": {}
+  },
+  "projects": {
+    "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBusConsole\\EntityFramework.ServiceBusConsole.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBusConsole\\EntityFramework.ServiceBusConsole.csproj",
+        "projectName": "EntityFramework.ServiceBusConsole",
+        "projectPath": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBusConsole\\EntityFramework.ServiceBusConsole.csproj",
+        "packagesPath": "C:\\Users\\Scott.Mackenzie\\.nuget\\packages\\",
+        "outputPath": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBusConsole\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Scott.Mackenzie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.myfoodbag.co.nz/nuget": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj": {
+                "projectPath": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj",
+        "projectName": "EntityFramework.ServiceBus",
+        "projectPath": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj",
+        "packagesPath": "C:\\Users\\Scott.Mackenzie\\.nuget\\packages\\",
+        "outputPath": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Scott.Mackenzie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.myfoodbag.co.nz/nuget": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "EntityFramework.Triggers": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "EntityFrameworkCore.Triggers": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "Microsoft.Azure.ServiceBus": {
+              "target": "Package",
+              "version": "[3.4.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
