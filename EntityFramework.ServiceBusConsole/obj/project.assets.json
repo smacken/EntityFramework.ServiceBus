@@ -387,6 +387,33 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
+      "Microsoft.Extensions.Logging.Configuration/3.0.0-preview6.19304.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "3.0.0-preview6.19304.6",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "3.0.0-preview6.19304.6"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Console/3.0.0-preview6.19304.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "3.0.0-preview6.19304.6",
+          "Microsoft.Extensions.Logging": "3.0.0-preview6.19304.6",
+          "Microsoft.Extensions.Logging.Configuration": "3.0.0-preview6.19304.6"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Console.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Console.dll": {}
+        }
+      },
       "Microsoft.Extensions.Options/3.0.0-preview6.19304.6": {
         "type": "package",
         "dependencies": {
@@ -399,6 +426,21 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Options.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/3.0.0-preview6.19304.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "3.0.0-preview6.19304.6",
+          "Microsoft.Extensions.Configuration.Binder": "3.0.0-preview6.19304.6",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0-preview6.19304.6",
+          "Microsoft.Extensions.Options": "3.0.0-preview6.19304.6"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
         }
       },
       "Microsoft.Extensions.Primitives/3.0.0-preview6.19304.6": {
@@ -2676,6 +2718,32 @@
         "microsoft.extensions.logging.abstractions.nuspec"
       ]
     },
+    "Microsoft.Extensions.Logging.Configuration/3.0.0-preview6.19304.6": {
+      "sha512": "r9KhypC3+LEyOrRQnD75ydeknydYWBtfXd/mlyDqL7YGDAmCr5AHBpHEXkbmIV24qGpMwEAH7CqB0rxWYMHHeA==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.configuration/3.0.0-preview6.19304.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.xml",
+        "microsoft.extensions.logging.configuration.3.0.0-preview6.19304.6.nupkg.sha512",
+        "microsoft.extensions.logging.configuration.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Console/3.0.0-preview6.19304.6": {
+      "sha512": "OiJBlFyJxuN04zh1euD4YRrPG9gKyETcXuK5bZ1nB7yRcOimiBt1GVx/vUb6I9gBmksssKfUaXIh/HqFo+6Qig==",
+      "type": "package",
+      "path": "microsoft.extensions.logging.console/3.0.0-preview6.19304.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Console.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Logging.Console.xml",
+        "microsoft.extensions.logging.console.3.0.0-preview6.19304.6.nupkg.sha512",
+        "microsoft.extensions.logging.console.nuspec"
+      ]
+    },
     "Microsoft.Extensions.Options/3.0.0-preview6.19304.6": {
       "sha512": "KfCOcw5FcwZA+VXkWK9tVoFglHY8+mhV+Xbqlbu89hTy9xHSDMr0JwLWlf3pvvlz4+fASI1LQKp6QOHZTbfHeQ==",
       "type": "package",
@@ -2687,6 +2755,19 @@
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
         "microsoft.extensions.options.3.0.0-preview6.19304.6.nupkg.sha512",
         "microsoft.extensions.options.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/3.0.0-preview6.19304.6": {
+      "sha512": "wU4jm7TzJ+MisgU9YN0y/fmTKjfu1MNVaofwxVVllVlGxDHp6lnsgTjPXLDlJVqnANJPleaeavgAb24vBQEYFw==",
+      "type": "package",
+      "path": "microsoft.extensions.options.configurationextensions/3.0.0-preview6.19304.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "microsoft.extensions.options.configurationextensions.3.0.0-preview6.19304.6.nupkg.sha512",
+        "microsoft.extensions.options.configurationextensions.nuspec"
       ]
     },
     "Microsoft.Extensions.Primitives/3.0.0-preview6.19304.6": {
@@ -7306,6 +7387,9 @@
       "Microsoft.Extensions.Configuration.EnvironmentVariables >= 2.2.4",
       "Microsoft.Extensions.Configuration.FileExtensions >= 2.2.0",
       "Microsoft.Extensions.Configuration.Json >= 2.2.0",
+      "Microsoft.Extensions.DependencyInjection >= 3.0.0-preview6.19304.6",
+      "Microsoft.Extensions.Logging >= 3.0.0-preview6.19304.6",
+      "Microsoft.Extensions.Logging.Console >= 3.0.0-preview6.19304.6",
       "Microsoft.NETCore.App >= 2.2.0"
     ]
   },
@@ -7371,6 +7455,18 @@
           "Microsoft.Extensions.Configuration.Json": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "Microsoft.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "[3.0.0-preview6.19304.6, )"
+          },
+          "Microsoft.Extensions.Logging": {
+            "target": "Package",
+            "version": "[3.0.0-preview6.19304.6, )"
+          },
+          "Microsoft.Extensions.Logging.Console": {
+            "target": "Package",
+            "version": "[3.0.0-preview6.19304.6, )"
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",

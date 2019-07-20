@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EntityFramework.ServiceBusConsole
@@ -13,33 +14,17 @@ namespace EntityFramework.ServiceBusConsole
 
         static async Task MainAsync()
         {
-            var serviceProvider = new ServiceCollection()
-                .AddSingleton<IAppHost, AppHost>()
-                .BuildServiceProvider();
+            IServiceCollection services = new ServiceCollection();
+            Startup bootstrap = new Startup();
+            bootstrap.ConfigureServices(services);
+            IServiceProvider serviceProvider = services.BuildServiceProvider();
 
-            string connectionString = string.Empty;
+            var config = serviceProvider.GetService<IConfigurationRoot>();
+            string connectionString = config.GetValue<string>("ConnectionStrings:Sqlite");
             using (var db = new ServiceDataContext(connectionString))
             {
                 await db.Customers.AddAsync(new Customer {FirstName = "Roger", LastName = "Gordon"});
             }
-        }
-    }
-
-    public interface IAppHost
-    {
-        void Run();
-    }
-
-    public class AppHost : IAppHost
-    {
-        
-        public AppHost()
-        {
-            
-        }
-
-        public void Run()
-        {
         }
     }
 }
