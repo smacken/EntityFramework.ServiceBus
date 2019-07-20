@@ -43,6 +43,10 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "Microsoft.Azure.ServiceBus": {
+              "target": "Package",
+              "version": "[3.4.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[2.2.6, )"

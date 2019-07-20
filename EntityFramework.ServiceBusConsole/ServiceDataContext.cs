@@ -1,31 +1,28 @@
-﻿using EntityFramework.ServiceBus;
+﻿﻿using EntityFramework.ServiceBus;
+using Microsoft.Azure.ServiceBus;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntityFramework.ServiceBusConsole
 {
     public class ServiceDataContext : ServiceBusContext
     {
-        public ServiceDataContext(string serviceBusConnectionString) : base(serviceBusConnectionString)
+        private string _connectionString = string.Empty;
+        public virtual DbSet<Customer> Customers { get; set; }
+
+        public ServiceDataContext(string serviceBusConnectionString, string databaseConnectionString) : base(serviceBusConnectionString)
         {
+            _connectionString = databaseConnectionString;
             ConfigureTriggers<Customer>();
-            
         }
 
-        public virtual Microsoft.EntityFrameworkCore.DbSet<Customer> Customers { get; set; }
+        public ServiceDataContext(DbContextOptions<ServiceBusContext> options, IQueueClient queueClient) : base(options, queueClient)
+        {
+        }
 
-        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=./Database.db");
+            if (!string.IsNullOrEmpty(_connectionString))
+                optionsBuilder.UseSqlite(_connectionString);
         }
-
-        // protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-        //     modelBuilder.Entity<Customer>()
-        //         .HasRequired(e => e.LastName);
-        // }
-
     }
 }

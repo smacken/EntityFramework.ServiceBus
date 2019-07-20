@@ -11,13 +11,18 @@ namespace EntityFramework.ServiceBus
 {
     public class ServiceBusContext : DbContextWithTriggers
     {
-        private IQueueClient _queueClient;
+        public IQueueClient QueueClient { get; set; }
+
+        public ServiceBusContext(DbContextOptions<ServiceBusContext> options, IQueueClient queueClient) :base(options)
+        { 
+            QueueClient = queueClient;
+        }
+
         public ServiceBusContext(string serviceBusConnectionString)
         {
-            _queueClient = new QueueClient(serviceBusConnectionString, nameof(ServiceBusContext));
             Triggers<TrackableEntity, ServiceBusContext>.Inserted += e => 
             {
-                _queueClient.SendAsync(new Message
+                QueueClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString()
@@ -25,8 +30,21 @@ namespace EntityFramework.ServiceBus
             };
             Triggers<TrackableEntity, ServiceBusContext>.Updated += e =>
             {
-                
+                QueueClient.SendAsync(new Message
+                {
+                    Body = EntityAsPayload(e.Entity),
+                    SessionId = Guid.NewGuid().ToString()
+                });
             };
+            Triggers<TrackableEntity, ServiceBusContext>.Deleted += e =>
+            {
+                QueueClient.SendAsync(new Message
+                {
+                    Body = EntityAsPayload(e.Entity),
+                    SessionId = Guid.NewGuid().ToString()
+                });
+            };
+            
             // foreach (var table in GetTables())
             // {
             //     Type typeArgument = Type.GetType(table);
@@ -50,7 +68,7 @@ namespace EntityFramework.ServiceBus
         {
             Triggers<T, ServiceBusContext>.Inserted += e =>
             {
-                _queueClient.SendAsync(new Message
+                QueueClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString()
@@ -58,7 +76,7 @@ namespace EntityFramework.ServiceBus
             };
             Triggers<T, ServiceBusContext>.Updated += e =>
             {
-                _queueClient.SendAsync(new Message
+                QueueClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString()
@@ -66,7 +84,7 @@ namespace EntityFramework.ServiceBus
             };
             Triggers<T, ServiceBusContext>.Deleted += e =>
             {
-                _queueClient.SendAsync(new Message
+                QueueClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString()
@@ -74,21 +92,11 @@ namespace EntityFramework.ServiceBus
             };
         }
 
-        // public List<string> GetTables()
-        // {
-        //     var metadata = ((IObjectContextAdapter)this).ObjectContext.MetadataWorkspace;
-            
-        //     var tableNames = metadata.GetItems<EntityType>(DataSpace.SSpace)
-        //         .Select(t => t.Name)
-        //         .ToList();
-        //     return tableNames;
-        // }
-
-        // protected override void Dispose(bool disposing)
-        // {
-        //     if (!_queueClient.IsClosedOrClosing) _queueClient.CloseAsync();
-        //     base.Dispose(disposing);
-        // }
+        public List<string> GetTables()
+        {
+            var entities = this.Model.GetEntityTypes();
+            return entities.Select(e => e.Name).ToList();
+        }
 
         private byte[] EntityAsPayload(TrackableEntity entity)
         {

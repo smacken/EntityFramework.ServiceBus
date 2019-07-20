@@ -7382,6 +7382,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "EntityFramework.ServiceBus >= 1.0.0",
+      "Microsoft.Azure.ServiceBus >= 3.4.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.2.6",
       "Microsoft.Extensions.Configuration >= 3.0.0-preview6.19304.6",
       "Microsoft.Extensions.Configuration.EnvironmentVariables >= 2.2.4",
@@ -7436,6 +7437,10 @@
     "frameworks": {
       "netcoreapp2.2": {
         "dependencies": {
+          "Microsoft.Azure.ServiceBus": {
+            "target": "Package",
+            "version": "[3.4.0, )"
+          },
           "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[2.2.6, )"
