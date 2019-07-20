@@ -1,5 +1,5 @@
 ﻿using System;
-using EntityFramework.Triggers;
+using EntityFrameworkCore.Triggers;
 
 namespace EntityFramework.ServiceBus
 {

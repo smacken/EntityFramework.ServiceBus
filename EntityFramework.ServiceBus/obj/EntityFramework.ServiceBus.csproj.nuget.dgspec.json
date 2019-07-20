@@ -1,32 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj": {}
+    "D:\\dev\\cs\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj": {}
   },
   "projects": {
-    "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj": {
+    "D:\\dev\\cs\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj",
+        "projectUniqueName": "D:\\dev\\cs\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj",
         "projectName": "EntityFramework.ServiceBus",
-        "projectPath": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj",
-        "packagesPath": "C:\\Users\\Scott.Mackenzie\\.nuget\\packages\\",
-        "outputPath": "C:\\scratch\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\obj\\",
+        "projectPath": "D:\\dev\\cs\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus.csproj",
+        "packagesPath": "C:\\Users\\scott\\.nuget\\packages\\",
+        "outputPath": "D:\\dev\\cs\\EntityFramework.ServiceBus\\EntityFramework.ServiceBus\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Scott.Mackenzie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\scott\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.myfoodbag.co.nz/nuget": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
@@ -42,14 +39,6 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.2.0, )"
-            },
-            "EntityFramework.Triggers": {
-              "target": "Package",
-              "version": "[6.2.0, )"
-            },
             "EntityFrameworkCore.Triggers": {
               "target": "Package",
               "version": "[1.2.0, )"
@@ -58,11 +47,27 @@
               "target": "Package",
               "version": "[3.4.0, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0-preview6.19304.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
             },
             "Polly": {
               "target": "Package",

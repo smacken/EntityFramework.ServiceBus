@@ -9,8 +9,8 @@ namespace EntityFramework.ServiceBusConsole
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<ServiceDataContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            // services.AddDbContext<ServiceDataContext>(options =>
+            //     options.UseSqlite(Configuration.GetConnectionString("Sqlite")));
         }
 
         private static IConfigurationRoot LoadAppSettings()

@@ -1,7 +1,4 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Transactions;
-using EntityFramework.ServiceBus;
+﻿using EntityFramework.ServiceBus;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntityFramework.ServiceBusConsole
@@ -19,16 +16,16 @@ namespace EntityFramework.ServiceBusConsole
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=./blog.db");
+            optionsBuilder.UseSqlite("Filename=./Database.db");
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        // protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        // {
+        //     modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
-            modelBuilder.Entity<Customer>()
-                .HasRequired(e => e.LastName);
-        }
+        //     modelBuilder.Entity<Customer>()
+        //         .HasRequired(e => e.LastName);
+        // }
 
     }
 }

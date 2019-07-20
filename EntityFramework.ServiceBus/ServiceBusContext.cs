@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Data.Entity.Infrastructure;
-using EntityFramework.Triggers;
+using EntityFrameworkCore.Triggers;
 using Microsoft.Azure.ServiceBus;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace EntityFramework.ServiceBus
 {
@@ -28,19 +27,23 @@ namespace EntityFramework.ServiceBus
             {
                 
             };
-            foreach (var table in GetTables())
-            {
-                Type typeArgument = Type.GetType(table);
-                Type closedType = typeof(Triggers<>).MakeGenericType(typeArgument);
-                object trigger = Activator.CreateInstance(closedType);
+            // foreach (var table in GetTables())
+            // {
+            //     Type typeArgument = Type.GetType(table);
+            //     Type closedType = typeof(Triggers<>).MakeGenericType(typeArgument);
+            //     object trigger = Activator.CreateInstance(closedType);
                 
-                var insertedEvent = trigger.GetType().GetEvent("Inserted");
-                //Delegate del = Delegate.CreateDelegate(
-                //    insertedEvent.EventHandlerType, null, handler);
-                //insertedEvent.AddEventHandler(trigger, () => );
+            //     var insertedEvent = trigger.GetType().GetEvent("Inserted");
+            //     //Delegate del = Delegate.CreateDelegate(
+            //     //    insertedEvent.EventHandlerType, null, handler);
+            //     //insertedEvent.AddEventHandler(trigger, () => );
                 
-                //Triggers.Triggers.Deleted += entry => 
-            }
+            //     //Triggers.Triggers.Deleted += entry => 
+            // }
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
         }
 
         public void ConfigureTriggers<T>() where T: TrackableEntity
@@ -71,21 +74,21 @@ namespace EntityFramework.ServiceBus
             };
         }
 
-        public List<string> GetTables()
-        {
-            var metadata = ((IObjectContextAdapter)this).ObjectContext.MetadataWorkspace;
+        // public List<string> GetTables()
+        // {
+        //     var metadata = ((IObjectContextAdapter)this).ObjectContext.MetadataWorkspace;
             
-            var tableNames = metadata.GetItems<EntityType>(DataSpace.SSpace)
-                .Select(t => t.Name)
-                .ToList();
-            return tableNames;
-        }
+        //     var tableNames = metadata.GetItems<EntityType>(DataSpace.SSpace)
+        //         .Select(t => t.Name)
+        //         .ToList();
+        //     return tableNames;
+        // }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (!_queueClient.IsClosedOrClosing) _queueClient.CloseAsync();
-            base.Dispose(disposing);
-        }
+        // protected override void Dispose(bool disposing)
+        // {
+        //     if (!_queueClient.IsClosedOrClosing) _queueClient.CloseAsync();
+        //     base.Dispose(disposing);
+        // }
 
         private byte[] EntityAsPayload(TrackableEntity entity)
         {
@@ -97,6 +100,5 @@ namespace EntityFramework.ServiceBus
             return Encoding.UTF8.GetBytes(payload);
         }
 
-        protected 
     }
 }
