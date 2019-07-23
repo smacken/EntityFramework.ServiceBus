@@ -21,7 +21,7 @@ namespace EntityFramework.ServiceBusConsole
 
             var config = serviceProvider.GetService<IConfigurationRoot>();
             string connectionString = config.GetValue<string>("ConnectionStrings:Sqlite");
-            using (var db = new ServiceDataContext(connectionString))
+            using (var db = serviceProvider.GetService<ServiceDataContext>())
             {
                 await db.Customers.AddAsync(new Customer {FirstName = "Roger", LastName = "Gordon"});
             }

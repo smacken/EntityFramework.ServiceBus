@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Azure.ServiceBus;
+using EntityFramework.ServiceBus;
 
 namespace EntityFramework.ServiceBusConsole
 {
@@ -25,10 +26,17 @@ namespace EntityFramework.ServiceBusConsole
             services.AddSingleton<IAppHost, AppHost>();
 
             string serviceBusConnectionString = Configuration.GetValue<string>("ConnectionStrings:AzureServiceBus");
-            services.AddScoped<IQueueClient>(provicer => new QueueClient(serviceBusConnectionString, nameof(ServiceDataContext)));
+            services.AddScoped<ITopicClient>(provider => new TopicClient(serviceBusConnectionString, nameof(ServiceDataContext)));
 
             string connectionString = Configuration.GetValue<string>("ConnectionStrings:Sqlite");
-            services.AddDbContext<ServiceDataContext>(options => options.UseSqlite(connectionString));
+            var contextOptions = new DbContextOptionsBuilder<ServiceBusContext>()
+                .UseSqlite(connectionString)
+                .Options;
+            services.AddSingleton(contextOptions);
+            services.AddSingleton<ServiceBusConfiguration>(provider => Configuration.GetSection("serviceBus").Get<ServiceBusConfiguration>());
+            services.AddScoped<ServiceDataContext>(provider => 
+                new ServiceDataContext(provider.GetService<DbContextOptions<ServiceBusContext>>(), provider.GetService<ITopicClient>()));
+            //services.AddDbContext<ServiceDataContext>(options => options.UseSqlite(connectionString));
         }
 
         private static IConfigurationRoot LoadAppSettings()

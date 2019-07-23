@@ -11,37 +11,41 @@ namespace EntityFramework.ServiceBus
 {
     public class ServiceBusContext : DbContextWithTriggers
     {
-        public IQueueClient QueueClient { get; set; }
+        public ITopicClient TopicClient { get; set; }
 
-        public ServiceBusContext(DbContextOptions<ServiceBusContext> options, IQueueClient queueClient) :base(options)
+        public ServiceBusContext(DbContextOptions<ServiceBusContext> options, ITopicClient topicClient) :base(options)
         { 
-            QueueClient = queueClient;
+            TopicClient = topicClient;
         }
 
         public ServiceBusContext(string serviceBusConnectionString)
         {
             Triggers<TrackableEntity, ServiceBusContext>.Inserted += e => 
             {
-                QueueClient.SendAsync(new Message
+                TopicClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
-                    SessionId = Guid.NewGuid().ToString()
+                    SessionId = Guid.NewGuid().ToString(),
+                    ContentType = "application/json",
+                    Label = e.Context.Set<TrackableEntity>().GetTableName(),
                 });
             };
             Triggers<TrackableEntity, ServiceBusContext>.Updated += e =>
             {
-                QueueClient.SendAsync(new Message
+                TopicClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
-                    SessionId = Guid.NewGuid().ToString()
+                    SessionId = Guid.NewGuid().ToString(),
+                    Label = e.Context.Set<TrackableEntity>().GetTableName(),
                 });
             };
             Triggers<TrackableEntity, ServiceBusContext>.Deleted += e =>
             {
-                QueueClient.SendAsync(new Message
+                TopicClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
-                    SessionId = Guid.NewGuid().ToString()
+                    SessionId = Guid.NewGuid().ToString(),
+                    Label = e.Context.Set<TrackableEntity>().GetTableName(),
                 });
             };
             
@@ -68,26 +72,32 @@ namespace EntityFramework.ServiceBus
         {
             Triggers<T, ServiceBusContext>.Inserted += e =>
             {
-                QueueClient.SendAsync(new Message
+                TopicClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
-                    SessionId = Guid.NewGuid().ToString()
+                    SessionId = Guid.NewGuid().ToString(),
+                    ContentType = "application/json",
+                    Label = Set<T>().GetTableName()
                 });
             };
             Triggers<T, ServiceBusContext>.Updated += e =>
             {
-                QueueClient.SendAsync(new Message
+                TopicClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
-                    SessionId = Guid.NewGuid().ToString()
+                    SessionId = Guid.NewGuid().ToString(),
+                    ContentType = "application/json",
+                    Label = Set<T>().GetTableName()
                 });
             };
             Triggers<T, ServiceBusContext>.Deleted += e =>
             {
-                QueueClient.SendAsync(new Message
+                TopicClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
-                    SessionId = Guid.NewGuid().ToString()
+                    SessionId = Guid.NewGuid().ToString(),
+                    ContentType = "application/json",
+                    Label = Set<T>().GetTableName()
                 });
             };
         }
