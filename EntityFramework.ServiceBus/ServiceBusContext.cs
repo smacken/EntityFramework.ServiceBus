@@ -22,30 +22,33 @@ namespace EntityFramework.ServiceBus
         {
             Triggers<TrackableEntity, ServiceBusContext>.Inserted += e => 
             {
+                var table = e.Context.Set<TrackableEntity>().GetTableName();
                 TopicClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString(),
                     ContentType = "application/json",
-                    Label = e.Context.Set<TrackableEntity>().GetTableName(),
+                    Label = $"{table}Inserted",
                 });
             };
             Triggers<TrackableEntity, ServiceBusContext>.Updated += e =>
             {
+                var table = e.Context.Set<TrackableEntity>().GetTableName();
                 TopicClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString(),
-                    Label = e.Context.Set<TrackableEntity>().GetTableName(),
+                    Label = $"{table}Updated",
                 });
             };
             Triggers<TrackableEntity, ServiceBusContext>.Deleted += e =>
             {
+                var table = e.Context.Set<TrackableEntity>().GetTableName();
                 TopicClient.SendAsync(new Message
                 {
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString(),
-                    Label = e.Context.Set<TrackableEntity>().GetTableName(),
+                    Label = $"{table}Deleted",
                 });
             };
             
@@ -77,7 +80,7 @@ namespace EntityFramework.ServiceBus
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString(),
                     ContentType = "application/json",
-                    Label = Set<T>().GetTableName()
+                    Label = $"{Set<T>().GetTableName()}Inserted"
                 });
             };
             Triggers<T, ServiceBusContext>.Updated += e =>
@@ -87,7 +90,7 @@ namespace EntityFramework.ServiceBus
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString(),
                     ContentType = "application/json",
-                    Label = Set<T>().GetTableName()
+                    Label = $"{Set<T>().GetTableName()}Updated"
                 });
             };
             Triggers<T, ServiceBusContext>.Deleted += e =>
@@ -97,7 +100,7 @@ namespace EntityFramework.ServiceBus
                     Body = EntityAsPayload(e.Entity),
                     SessionId = Guid.NewGuid().ToString(),
                     ContentType = "application/json",
-                    Label = Set<T>().GetTableName()
+                    Label = $"{Set<T>().GetTableName()}Deleted"
                 });
             };
         }

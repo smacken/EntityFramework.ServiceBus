@@ -31,6 +31,7 @@ msbuild.wrn
 obj/*
 bin/*
 EntityFramework.ServiceBus/bin/*
+appsettings.dev.json
 # Visual Studio 2015
 .vs/
 EntityFramework.ServiceBusConsole/obj/Debug/netcoreapp2.2/EntityFramework.ServiceBusConsole.csprojAssemblyReference.cache
