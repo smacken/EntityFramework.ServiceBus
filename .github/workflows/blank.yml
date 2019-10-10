@@ -13,9 +13,3 @@ jobs:
       run: dotnet build --configuration Release
     - name: Test
       run: dotnet test EntityFramework.ServiceBus.sln --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-    - name: Codecoverage  
-      uses: codecov/codecov-action@v1.0.2
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
-        file: ./EntityFramework.ServiceBusTest/coverage.opencover.xml
-        name: codecov-umbrella
