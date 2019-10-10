@@ -18,6 +18,11 @@ namespace EntityFramework.ServiceBus
             TopicClient = topicClient;
         }
 
+        public DbContextOptions<ServiceBusContext> Options(string connectionString = null)
+        {
+            return null;
+        }
+
         public ServiceBusContext(string serviceBusConnectionString)
         {
             Triggers<TrackableEntity, ServiceBusContext>.Inserted += e => 

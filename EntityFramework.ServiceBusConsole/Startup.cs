@@ -18,11 +18,7 @@ namespace EntityFramework.ServiceBusConsole
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddLogging();
             services.AddSingleton<IConfigurationRoot>(Configuration);
-
-            //example
-            //services.AddSingleton<IMyService, MyService>();
             services.AddSingleton<IAppHost, AppHost>();
 
             string serviceBusConnectionString = Configuration.GetValue<string>("ConnectionStrings:AzureServiceBus");
@@ -36,7 +32,6 @@ namespace EntityFramework.ServiceBusConsole
             services.AddSingleton<ServiceBusConfiguration>(provider => Configuration.GetSection("serviceBus").Get<ServiceBusConfiguration>());
             services.AddScoped<ServiceDataContext>(provider => 
                 new ServiceDataContext(provider.GetService<DbContextOptions<ServiceBusContext>>(), provider.GetService<ITopicClient>()));
-            //services.AddDbContext<ServiceDataContext>(options => options.UseSqlite(connectionString));
         }
 
         private static IConfigurationRoot LoadAppSettings()

@@ -1,7 +1,6 @@
 namespace EntityFramework.ServiceBus{
     public class ServiceBusConfiguration
     {
-
         public string ConnectionString { get; set; }
         public string ResourceGroup { get; set; }
         public string NamespaceName { get; set; }
