@@ -33,7 +33,7 @@ bin/*
 EntityFramework.ServiceBus/bin/*
 appsettings.dev.json
 # Visual Studio 2015
-.vs/
+.vs/*
 EntityFramework.ServiceBusConsole/obj/Debug/netcoreapp2.2/EntityFramework.ServiceBusConsole.csprojAssemblyReference.cache
 EntityFramework.ServiceBusConsole/obj/Debug/netcoreapp2.2/EntityFramework.ServiceBusConsole.assets.cache
 EntityFramework.ServiceBusConsole/obj/Debug/netcoreapp2.2/EntityFramework.ServiceBusConsole.csproj.CoreCompileInputs.cache
