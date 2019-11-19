@@ -5,20 +5,33 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/setup-dotnet@v1
+    #- uses: actions/setup-dotnet@v1
+    #  with:
+    #    dotnet-version: '3.0.100'
+    - name: Generate build number
+      id: buildnumber
+      uses: einaregilsson/build-number@v1 
       with:
-        dotnet-version: '3.0.100'
+        token: ${{secrets.GITHUB_TOKEN}}
     - name: Build
       run: dotnet build --configuration Release
     - name: Test
       run: dotnet test EntityFramework.ServiceBus.sln --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-    - name: Upload coverage to Codecov  
-      uses: codecov/codecov-action@v1.0.2
-      with:
-        token: ${{secrets.CODECOV_TOKEN}}
-        file: ./coverage.opencover.xml
-        name: codecov-umbrella 
+    #- name: Upload coverage to Codecov  
+    #  uses: codecov/codecov-action@v1.0.2
+    #  with:
+    #    token: ${{secrets.CODECOV_TOKEN}}
+    #    file: ./coverage.opencover.xml
+    #    name: codecov-umbrella 
+    - name: Build NuGet package
+      run: dotnet pack EntityFramework.ServiceBus.sln -c Release -o .\dist /p:Version=${{steps.buildnumber.outputs.build_number}}
+    - name: Install NuGet client
+      uses: warrenbuckley/Setup-Nuget@v1
+    - name: Add private GitHub registry to NuGet
+      run: nuget sources add -name "GPR" -Source https://nuget.pkg.github.com/smacken/index.json -Username smacken -Password ${{ secrets.GITHUB_TOKEN }}
+    #- name: Push generated package to GitHub registry
+    #  run: nuget push .\dist\*.nupkg -Source "GPR" -SkipDuplicate
